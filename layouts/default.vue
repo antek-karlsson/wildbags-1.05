@@ -1,10 +1,17 @@
 <template>
   <div>
     <Navbar />
-    <slot />
+    <main>
+      <slot />
+    </main>
   </div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+main {
+  height: 100vh;
+  width: 100vw;
+}
+</style>

@@ -36,7 +36,12 @@ export default defineNuxtConfig({
       baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     },
   },
-  components: true,
+  components: [
+    {
+      path: '~/components/',
+      pathPrefix: false,
+    },
+  ],
   modules: ['unplugin-icons/nuxt', '@vueuse/nuxt', ['@pinia/nuxt', { autoImports: ['defineStore'] }]],
   build: {
     transpile: ['gsap, vue-agile'],
