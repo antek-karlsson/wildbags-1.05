@@ -1,14 +1,11 @@
 <template>
   <div>
-    <h1>Wildbags</h1>
+    <Hero :text="heroText" />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const heroText = 'ODKRYJ ABSOLUTNIE NIEPOSPOLITY ŚWIAT UPCYCLINGU I NOŚ SIĘ WYJĄTKOWO!';
+</script>
 
-<style lang="scss" scoped>
-h1 {
-  color: $color-black;
-  font-family: $font-amatic;
-}
-</style>
+<style lang="scss" scoped></style>

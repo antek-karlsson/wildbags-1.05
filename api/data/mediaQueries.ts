@@ -1,3 +1,3 @@
 export default {
-  xs: '(max-width: 576px)',
+  xs: '(max-width: 600px)',
 };
