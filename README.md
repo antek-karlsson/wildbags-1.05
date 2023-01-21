@@ -1,6 +1,6 @@
-# Nuxt 3 Minimal Starter
+# Wildbags Frontend
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Built with Nuxt3
 
 ## Setup
 
@@ -22,7 +22,7 @@ pnpm install
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 ## Production
@@ -30,13 +30,11 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+yarn generate
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+yarn preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
