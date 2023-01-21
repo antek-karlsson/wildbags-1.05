@@ -9,5 +9,6 @@
 <style lang="scss" scoped>
 h1 {
   color: $color-black;
+  font-family: $font-amatic;
 }
 </style>
