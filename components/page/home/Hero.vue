@@ -1,6 +1,6 @@
 <template>
   <div class="hero">
-    <p class="hero__text">{{ text }}</p>
+    <h1 class="hero__text">{{ text }}</h1>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ defineProps<{
   background-repeat: no-repeat;
   background-position: center;
   @include flex(column);
+  box-shadow: 0 1em 1em -1em rgba(0, 0, 0, 0.25);
 
   &__text {
     max-width: 90%;

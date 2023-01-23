@@ -38,7 +38,6 @@
     "@vuelidate/validators": "^2.0.0",
     "gsap": "^3.11.4",
     "pinia": "^2.0.29",
-    "reset-css": "^5.0.1",
-    "vue-agile": "^2.0.0"
+    "reset-css": "^5.0.1"
   }
 }

@@ -1,3 +1,18 @@
 @import 'variables';
 @import 'responsive';
 @import 'mixins';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-amatic;
+}
+
+p,
+span {
+  font-family: $font-josefin;
+  font-weight: 300;
+}

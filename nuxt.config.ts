@@ -44,7 +44,7 @@ export default defineNuxtConfig({
   ],
   modules: ['unplugin-icons/nuxt', '@vueuse/nuxt', ['@pinia/nuxt', { autoImports: ['defineStore'] }]],
   build: {
-    transpile: ['gsap, vue-agile'],
+    transpile: ['gsap'],
   },
   css: ['@/assets/scss/common/index.scss'],
   vite: {
