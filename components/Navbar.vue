@@ -97,7 +97,7 @@ watch(isScreenMobile, () => {
     font-size: 2.4rem;
     padding: 1rem;
 
-    @include screen-2xl {
+    @include desktop-2xl {
       font-size: 4rem;
     }
 
