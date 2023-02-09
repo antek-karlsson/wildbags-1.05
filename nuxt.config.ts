@@ -33,7 +33,16 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+      baseUrl: process.env.BASE_URL,
+      firebaseApiKey: process.env.NUXT_PUBLIC_FIREBASE_API_KEY,
+      firebaseAuthDomain: process.env.NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+      firebaseProjectId: process.env.NUXT_PUBLIC_FIREBASE_PROJECT_ID,
+      firebaseStorageBucket: process.env.NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+      firebaseMessagingSenderId: process.env.NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+      firebaseAppId: process.env.NUXT_PUBLIC_FIREBASE_APP_ID,
+      emailjsServiceId: process.env.NUXT_PUBLIC_EMAILJS_SERVICE_ID,
+      emailjsTemplateId: process.env.NUXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      emailjsApiKey: process.env.NUXT_PUBLIC_EMAILJS_API_KEY,
     },
   },
   components: [
@@ -73,5 +82,8 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  imports: {
+    dirs: ['composables'],
   },
 });
