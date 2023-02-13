@@ -1,8 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { DocumentData, getFirestore, collection, getDocs } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 
-export default function useFirebase() {
+export function useFirebase() {
   const config = useRuntimeConfig();
   const firebaseConfig = {
     apiKey: config.public.firebaseApiKey,
@@ -17,15 +17,6 @@ export default function useFirebase() {
   const db = getFirestore(firebaseApp);
   const storage = getStorage(firebaseApp);
 
-  async function getAllProducts() {
-    const allProducts: DocumentData[] = [];
-    const querySnapshot = await getDocs(collection(db, 'products'));
-    querySnapshot.forEach((product) => {
-      allProducts.push(product.data());
-    });
-    return allProducts;
-  }
-
   async function getImageDownloadUrl(src: string): Promise<string> {
     let imgDownloadUrl = '';
     await getDownloadURL(ref(storage, src)).then((url) => (imgDownloadUrl = url));
@@ -36,7 +27,6 @@ export default function useFirebase() {
     firebaseApp,
     db,
     storage,
-    getAllProducts,
     getImageDownloadUrl,
   };
 }
