@@ -24,7 +24,14 @@
 </template>
 
 <script setup lang="ts">
+import { useProductsStore } from '@/store/products';
 const heroText = 'ODKRYJ ABSOLUTNIE NIEPOSPOLITY ŚWIAT UPCYCLINGU I NOŚ SIĘ WYJĄTKOWO!';
+
+const store = useProductsStore();
+
+onMounted(() => {
+  store.fetchAllProducts();
+});
 </script>
 
 <style lang="scss" scoped>
