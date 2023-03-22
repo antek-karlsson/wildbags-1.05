@@ -12,9 +12,8 @@ export interface Product {
   categories: string[];
 }
 
-const { db } = useFirebase();
-
 export const useProductsStore = defineStore('products', () => {
+  const { db } = useFirebase();
   const allProducts = ref<Product[]>();
   const singleProduct = ref<Product | object>({});
 
