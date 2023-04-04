@@ -1,6 +1,7 @@
 <template>
   <div class="home-page">
     <Hero :text="heroText" />
+    <ProductSwiper />
     <InfoCard
       direction="ltr"
       img-url="/images/info-card-1.png"
@@ -36,6 +37,6 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .home-page {
-  @include flex(column, null, null, 0);
+  @include flex(column, null, null);
 }
 </style>

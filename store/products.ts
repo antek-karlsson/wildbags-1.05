@@ -1,19 +1,9 @@
 import { collection, doc, getDocs, getDoc, query } from 'firebase/firestore';
-
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  status: string;
-  images: string[];
-  description: string;
-  features: string[];
-  sizes: string[];
-  categories: string[];
-}
+import { ref as firebaseRef, getDownloadURL } from 'firebase/storage';
+import type { Product } from '@/types/product';
 
 export const useProductsStore = defineStore('products', () => {
-  const { db } = useFirebase();
+  const { db, storage } = useFirebase();
   const allProducts = ref<Product[]>();
   const singleProduct = ref<Product | object>({});
 
@@ -39,10 +29,26 @@ export const useProductsStore = defineStore('products', () => {
     }
   }
 
+  async function getImgUrl(imgSrc: string) {
+    try {
+      let downloadUrl = '';
+      await getDownloadURL(firebaseRef(storage, imgSrc)).then((url) => {
+        downloadUrl = url;
+      });
+
+      // console.log(downloadUrl);
+      return downloadUrl;
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
+  }
+
   return {
     allProducts,
     singleProduct,
     fetchAllProducts,
     fetchSingleProduct,
+    getImgUrl,
   };
 });
