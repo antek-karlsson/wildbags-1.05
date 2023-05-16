@@ -5,7 +5,7 @@ import type { Product } from '@/types/product';
 export const useProductsStore = defineStore('products', () => {
   const { db, storage } = useFirebase();
   const allProducts = ref<Product[]>();
-  const singleProduct = ref<Product | object>({});
+  const singleProduct = ref<Product | object>();
 
   async function fetchAllProducts() {
     const items = [];
@@ -44,11 +44,19 @@ export const useProductsStore = defineStore('products', () => {
     }
   }
 
+  function setSingleProduct(productId: string) {
+    if (allProducts.value) {
+      const product = allProducts.value.find((product) => product.id === productId);
+      singleProduct.value = product;
+    }
+  }
+
   return {
     allProducts,
     singleProduct,
     fetchAllProducts,
     fetchSingleProduct,
     getImgUrl,
+    setSingleProduct,
   };
 });
