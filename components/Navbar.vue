@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import breakpoints from '@/api/data/mediaQueries';
+import breakpoints from '@/api/data/constants/mediaQueries';
 
 const isNavOpen = ref(false);
 const isScreenMobile = useMediaQuery(breakpoints.xs);
@@ -64,6 +64,10 @@ watch(
 
 watch(isScreenMobile, () => {
   !isScreenMobile && isNavOpen.value === true ? (isNavOpen.value = false) : (isNavOpen.value = false);
+});
+
+watch(currentRoute, () => {
+  isNavOpen.value = false;
 });
 </script>
 

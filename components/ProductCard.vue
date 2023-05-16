@@ -57,12 +57,12 @@ onMounted(() => {
   }
 
   &__name {
-    font-family: $font-josefin;
+    font-family: $font-lato;
     font-size: 1.6rem;
   }
 
   &__price {
-    font-family: $font-josefin;
+    font-family: $font-lato;
     font-size: 1.6rem;
   }
 
