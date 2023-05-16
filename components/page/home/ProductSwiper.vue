@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { useProductsStore } from '@/store/products';
-import breakpoints from '@/api/data/mediaQueries';
+import breakpoints from '@/api/data/constants/mediaQueries';
 
 const store = useProductsStore();
 const isScreenMobile = useMediaQuery(breakpoints.xs);
