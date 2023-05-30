@@ -51,7 +51,13 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  modules: ['unplugin-icons/nuxt', '@vueuse/nuxt', 'nuxt-swiper', ['@pinia/nuxt', { autoImports: ['defineStore'] }]],
+  modules: [
+    'unplugin-icons/nuxt',
+    '@vueuse/nuxt',
+    'nuxt-swiper',
+    '@pinia-plugin-persistedstate/nuxt',
+    ['@pinia/nuxt', { autoImports: ['defineStore'] }],
+  ],
   build: {
     transpile: ['gsap'],
   },
