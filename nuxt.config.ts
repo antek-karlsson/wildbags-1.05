@@ -1,10 +1,12 @@
 import eslintPlugin from 'vite-plugin-eslint';
 import svgLoader from 'vite-svg-loader';
+import UnpluginComponentsVite from 'unplugin-vue-components/vite';
+import IconsResolver from 'unplugin-icons/resolver';
 
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Wildbags - Ręcznie wykonane torebki i kosmetyczki z upcyclingu.',
+      title: 'Wildbags | Ręcznie wykonane torebki i kosmetyczki z upcyclingu.',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -23,23 +25,56 @@ export default defineNuxtConfig({
         },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap',
+          href: 'https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lato:wght@300;700&display=swap',
         },
-        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        { rel: 'icon', type: 'image/png', href: '/favicon.ico' },
       ],
     },
   },
   runtimeConfig: {
     public: {
-      baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+      baseUrl: process.env.BASE_URL,
+      firebaseApiKey: process.env.NUXT_PUBLIC_FIREBASE_API_KEY,
+      firebaseAuthDomain: process.env.NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+      firebaseProjectId: process.env.NUXT_PUBLIC_FIREBASE_PROJECT_ID,
+      firebaseStorageBucket: process.env.NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+      firebaseMessagingSenderId: process.env.NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+      firebaseAppId: process.env.NUXT_PUBLIC_FIREBASE_APP_ID,
+      emailjsServiceId: process.env.NUXT_PUBLIC_EMAILJS_SERVICE_ID,
+      emailjsTemplateId: process.env.NUXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      emailjsApiKey: process.env.NUXT_PUBLIC_EMAILJS_API_KEY,
     },
   },
+  components: [
+    {
+      path: '~/components/',
+      pathPrefix: false,
+    },
+  ],
+  modules: [
+    'unplugin-icons/nuxt',
+    '@vueuse/nuxt',
+    'nuxt-swiper',
+    '@pinia-plugin-persistedstate/nuxt',
+    ['@pinia/nuxt', { autoImports: ['defineStore'] }],
+  ],
   build: {
-    transpile: ['gsap, vue-agile'],
+    transpile: ['gsap'],
   },
   css: ['@/assets/scss/common/index.scss'],
   vite: {
-    plugins: [eslintPlugin({ failOnError: false }), svgLoader()],
+    plugins: [
+      eslintPlugin({ failOnError: false }),
+      svgLoader(),
+      UnpluginComponentsVite({
+        dts: true,
+        resolvers: [
+          IconsResolver({
+            prefix: 'Icon',
+          }),
+        ],
+      }),
+    ],
     build: {
       target: 'esnext',
       commonjsOptions: {
@@ -53,5 +88,8 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  imports: {
+    dirs: ['composables/**'],
   },
 });

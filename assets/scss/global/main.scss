@@ -1,2 +1,19 @@
-@import "variables";
-@import "responsive";
+@import 'variables';
+@import 'responsive';
+@import 'mixins';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-amatic;
+}
+
+p,
+span,
+li {
+  font-family: $font-lato;
+  font-weight: 300;
+}

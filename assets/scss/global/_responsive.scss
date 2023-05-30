@@ -1,26 +1,30 @@
 //Breakpoints
-@mixin screen-sm {
-  @media screen and (min-width: 640px) {
+@mixin tablet {
+  @media screen and (min-width: 600px) {
     @content;
   }
 }
-@mixin screen-md {
-  @media screen and (min-width: 768px) {
+
+@mixin tablet-landscape {
+  @media screen and (min-width: 900px) {
     @content;
   }
 }
-@mixin screen-lg {
-  @media screen and (min-width: 1024px) {
+
+@mixin desktop {
+  @media screen and (min-width: 1200px) {
     @content;
   }
 }
-@mixin screen-xl {
-  @media screen and (min-width: 1280px) {
+
+@mixin desktop-lg {
+  @media screen and (min-width: 1440px) {
     @content;
   }
 }
-@mixin screen-2xl {
-  @media screen and (min-width: 1536px) {
+
+@mixin desktop-2xl {
+  @media screen and (min-width: 1800px) {
     @content;
   }
 }
