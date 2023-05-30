@@ -4,6 +4,7 @@
     <main>
       <slot />
     </main>
+    <div id="modal-target"></div>
   </div>
 </template>
 
