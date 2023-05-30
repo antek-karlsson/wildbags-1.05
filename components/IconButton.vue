@@ -1,16 +1,21 @@
 <template>
-  <button type="button" class="icon-button">
+  <button type="button" class="icon-button" :class="{ 'icon-button--cart': type === 'cart' }">
     <IconCarbon:shopping-cart v-if="type === 'cart'" />
+    <div v-if="type === 'cart' && cart.cartQuantity > 0" class="icon-button__quantity">{{ cart.cartQuantity }}</div>
     <IconCarbon:menu v-if="type === 'menu' && !isNavOpen" />
     <IconCarbon:close v-if="type === 'menu' && isNavOpen" />
   </button>
 </template>
 
 <script setup lang="ts">
+import { useCartStore } from '@/store/cart';
+
 defineProps<{
   type: 'cart' | 'menu';
   isNavOpen?: boolean;
 }>();
+
+const cart = useCartStore();
 </script>
 
 <style lang="scss" scoped>
@@ -38,6 +43,25 @@ defineProps<{
       svg {
         color: $color-black;
       }
+    }
+  }
+
+  &--cart {
+    position: relative;
+
+    .icon-button__quantity {
+      position: absolute;
+      top: 2.5rem;
+      left: -1.5rem;
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background-color: $color-black;
+      color: $color-white;
+      z-index: 50;
     }
   }
 }

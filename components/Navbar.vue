@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <IconButton class="navbar__cart-icon" type="cart" />
+    <IconButton class="navbar__cart-icon" type="cart" @click="isCartOpen = true" />
     <div class="navbar__logo">
       <NuxtLink to="/"><img src="@/assets/images/logo.png" alt="Wildbags logo" /></NuxtLink>
     </div>
@@ -39,6 +39,7 @@
         </div>
       </template>
     </ClientOnly>
+    <CartModal v-if="isCartOpen" @close-modal="isCartOpen = false" />
   </div>
 </template>
 
@@ -46,6 +47,7 @@
 import breakpoints from '@/api/data/constants/mediaQueries';
 
 const isNavOpen = ref(false);
+const isCartOpen = ref(false);
 const isScreenMobile = useMediaQuery(breakpoints.xs);
 const route = useRoute();
 const currentRoute = ref();
@@ -100,9 +102,10 @@ watch(currentRoute, () => {
     color: $color-black;
     font-size: 2.4rem;
     padding: 1rem;
+    font-family: $font-lato;
 
     @include desktop-2xl {
-      font-size: 4rem;
+      font-size: 3.2rem;
     }
 
     &--active {

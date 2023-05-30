@@ -49,8 +49,8 @@
       </div>
       <form class="product__content-cart">
         <p class="product__price">{{ product.price }},00 zł</p>
-        <input v-model="cartItem.amount" type="number" />
-        <BaseButton type="button" @click="handleAddProductToCart">Dodaj do koszyka</BaseButton>
+        <input v-model="amount" type="number" />
+        <BaseButton type="button" @click="handleAddProductToCart()">Dodaj do koszyka</BaseButton>
       </form>
     </div>
   </div>
@@ -64,30 +64,16 @@ import { PRODUCT_MESSAGE } from '@/api/data/constants/productMessage';
 import breakpoints from '@/api/data/constants/mediaQueries';
 
 import type { Product } from '@/types/product';
-import type { CartItem } from '@/types/cart-item';
 
 const route = useRoute();
 const productStore = useProductsStore();
-const cartStore = useCartStore();
+const { addProductToCart } = useCartStore();
 const isScreenTablet = useMediaQuery(breakpoints.sm);
 
 const product = ref<Product>();
 const imgUrls = ref<string[]>();
 const activeThumb = ref(0);
-
-const cartItem = ref({
-  id: '',
-  name: '',
-  price: 0,
-  amount: 1,
-});
-
-const cartItemInitial = {
-  id: '',
-  name: '',
-  price: 0,
-  amount: 1,
-};
+const amount = ref(1);
 
 const productId = computed(() => route.params.productId as string);
 
@@ -112,11 +98,15 @@ async function setImgUrls() {
 }
 
 function handleAddProductToCart() {
-  cartItem.value.id = product.value.id;
-  cartItem.value.name = product.value.name;
-  cartItem.value.price = product.value.price;
-  cartStore.addProductToCart(cartItem.value);
-  cartItem.value = cartItemInitial;
+  const cartItem = {
+    id: product.value.id,
+    name: product.value.name,
+    price: product.value.price,
+    imgUrl: imgUrls.value[0],
+    amount: amount.value,
+  };
+  addProductToCart(cartItem);
+  amount.value = 1;
 }
 
 function setActiveThumbnail(id: number) {
