@@ -205,7 +205,7 @@ async function placeOrder() {
       config.public.emailjsServiceId,
       config.public.emailjsOrderTemplateId,
       order.value,
-      config.emailjsApiKey,
+      config.public.emailjsApiKey,
     ).then(
       // Success callback
       () => {
