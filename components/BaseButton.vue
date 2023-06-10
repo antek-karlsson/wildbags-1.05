@@ -30,7 +30,7 @@ const component = computed(() => {
 });
 
 const classes = computed(() => {
-  return ['base-button', `base-button--${props.colorScheme}`];
+  return ['base-button', `base-button--${props.colorScheme}`, { 'base-button--disabled': props.disabled }];
 });
 </script>
 
@@ -51,6 +51,7 @@ const classes = computed(() => {
   line-height: 1.2;
   letter-spacing: normal;
   white-space: nowrap;
+  text-decoration: none;
   transition: all 0.2s;
 
   @media (hover: hover) {
@@ -94,6 +95,37 @@ const classes = computed(() => {
     }
   }
 
+  &--outline {
+    background-color: $color-white;
+    border-color: $color-black;
+    color: $color-black;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: $color-black;
+        color: $color-white;
+      }
+    }
+
+    &:focus-visible {
+      background-color: $color-black;
+      color: $color-white;
+    }
+  }
+
+  &--disabled {
+    background-color: rgba(206, 206, 206, 0.399);
+    border-color: rgba(206, 206, 206, 0.399);
+    color: $color-black;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: rgba(206, 206, 206, 0.399);
+        cursor: not-allowed;
+      }
+    }
+  }
+
   // &--secondary {
   //   background-color: $primary-color--medium;
   //   border-color: $primary-color--medium;
@@ -129,24 +161,6 @@ const classes = computed(() => {
   //     border-color: $primary-color--medium;
   //     background-color: $white;
   //     color: $primary-color--medium;
-  //   }
-  // }
-
-  // &--outline {
-  //   background-color: $white;
-  //   border-color: $primary-color--medium;
-  //   color: $primary-color--medium;
-
-  //   @media (hover: hover) {
-  //     &:hover {
-  //       background-color: $primary-color--medium;
-  //       color: $white;
-  //     }
-  //   }
-
-  //   &:focus-visible {
-  //     background-color: $primary-color--medium;
-  //     color: $white;
   //   }
   // }
 }

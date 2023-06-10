@@ -28,6 +28,20 @@ export const useCartStore = defineStore(
       } else cartItems.value.push(product);
     }
 
+    function incrementCartItem(itemId: string) {
+      const targetItem = cartItems.value.find((item) => item.id === itemId);
+      if (targetItem) {
+        targetItem.amount++;
+      }
+    }
+
+    function decrementCartItem(itemId: string) {
+      const targetItem = cartItems.value.find((item) => item.id === itemId);
+      if (targetItem) {
+        targetItem.amount > 1 ? targetItem.amount-- : removeProductFromCart(itemId);
+      }
+    }
+
     function removeProductFromCart(productId: string) {
       cartItems.value = cartItems.value.filter((item) => item.id !== productId);
     }
@@ -41,6 +55,8 @@ export const useCartStore = defineStore(
       cartQuantity,
       cartTotal,
       addProductToCart,
+      incrementCartItem,
+      decrementCartItem,
       removeProductFromCart,
       resetCart,
     };

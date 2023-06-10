@@ -1,4 +1,5 @@
 @import '@/node_modules/reset-css/sass/reset';
+@import '@/node_modules/vue-multiselect/dist/vue-multiselect.css';
 
 html {
   font-size: 62.5%;
@@ -19,4 +20,13 @@ body {
 *::after,
 *::before {
   box-sizing: inherit;
+}
+
+input:focus {
+  all: unset;
+}
+
+.vue-notification {
+  font-family: $font-lato;
+  padding: 2rem !important;
 }
