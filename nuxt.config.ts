@@ -40,9 +40,10 @@ export default defineNuxtConfig({
       firebaseStorageBucket: process.env.NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
       firebaseMessagingSenderId: process.env.NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
       firebaseAppId: process.env.NUXT_PUBLIC_FIREBASE_APP_ID,
-      emailjsServiceId: process.env.NUXT_PUBLIC_EMAILJS_SERVICE_ID,
-      emailjsTemplateId: process.env.NUXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-      emailjsApiKey: process.env.NUXT_PUBLIC_EMAILJS_API_KEY,
+      emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
+      emailjsContactTemplateId: process.env.EMAILJS_CONTACT_TEMPLATE_ID,
+      emailjsOrderTemplateId: process.env.EMAILJS_ORDER_TEMPLATE_ID,
+      emailjsApiKey: process.env.EMAILJS_API_KEY,
     },
   },
   components: [
