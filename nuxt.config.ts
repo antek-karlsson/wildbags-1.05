@@ -90,7 +90,7 @@ export default defineNuxtConfig({
       },
     },
     optimizeDeps: {
-      exclude: ['@nuxt/kit'],
+      include: ['@nuxt/kit'],
     },
   },
   imports: {
