@@ -1,11 +1,16 @@
 <template>
-  <div v-show="store.allProducts" class="shop-page">
-    <ProductCard
-      v-for="(product, index) in store.allProducts"
-      :key="index"
-      class="shop-page__card"
-      :product="product"
-    />
+  <div class="shop-page">
+    <template v-if="isLoading">
+      <Loader size="100px" :loading="isLoading" />
+    </template>
+    <template v-if="!isLoading && store.allProducts">
+      <ProductCard
+        v-for="(product, index) in store.allProducts"
+        :key="index"
+        class="shop-page__card"
+        :product="product"
+      />
+    </template>
   </div>
 </template>
 
@@ -14,6 +19,10 @@ import { useProductsStore } from '@/store/products';
 
 const store = useProductsStore();
 
+const imgIds = computed(() => !!store.allProducts && store.allProducts.map((product) => product.images));
+
+const isLoading = computed(() => !store.allProducts && !imgIds.value);
+
 onMounted(() => {
   store.fetchAllProducts();
 });
@@ -21,6 +30,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .shop-page {
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
