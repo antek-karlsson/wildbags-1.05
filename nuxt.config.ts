@@ -89,6 +89,9 @@ export default defineNuxtConfig({
         },
       },
     },
+    optimizeDeps: {
+      exclude: ['@nuxt/kit'],
+    },
   },
   imports: {
     dirs: ['composables/**'],
