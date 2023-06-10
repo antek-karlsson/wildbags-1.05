@@ -1,58 +1,64 @@
 <template>
-  <div v-if="product" class="product">
-    <h2 class="product__name">{{ product.name }}</h2>
-    <div class="product__swiper">
-      <ClientOnly>
-        <Swiper
-          :modules="modules"
-          :thumbs="{ swiper: productThumbs }"
-          :space-between="24"
-          :slides-per-view="1"
-          :pagination="isScreenTablet && { clickable: true }"
-          loop
-          navigation
-          @swiper="setProductSwiper"
-          @active-index-change="setActiveThumbnail(productSwiper.realIndex)"
-        >
+  <div class="product">
+    <template v-if="isLoading">
+      <Loader size="100px" :loading="isLoading" />
+    </template>
+    <template v-if="product && !isLoading">
+      <h2 class="product__name">{{ product.name }}</h2>
+      <div class="product__swiper">
+        <ClientOnly>
+          <Swiper
+            :modules="modules"
+            :thumbs="{ swiper: productThumbs }"
+            :space-between="24"
+            :slides-per-view="1"
+            :pagination="isScreenTablet && { clickable: true }"
+            loop
+            navigation
+            @swiper="setProductSwiper"
+            @active-index-change="setActiveThumbnail(productSwiper.realIndex)"
+          >
+            <SwiperSlide v-for="(url, id) in imgUrls" :key="id">
+              <img :src="url" :alt="product.name" />
+            </SwiperSlide>
+          </Swiper>
+        </ClientOnly>
+      </div>
+      <div v-if="imgUrls && !isScreenTablet" class="product__thumbs">
+        <Swiper :slides-per-view="imgUrls.length" :space-between="10" @swiper="setProductThumbs">
           <SwiperSlide v-for="(url, id) in imgUrls" :key="id">
-            <img :src="url" :alt="product.name" />
+            <div
+              class="product__thumb"
+              :class="{ 'product__thumb--active': id === activeThumb }"
+              @click="activeThumb = id"
+            >
+              <img :src="url" :alt="product.name" />
+            </div>
           </SwiperSlide>
         </Swiper>
-      </ClientOnly>
-    </div>
-    <div v-if="imgUrls && !isScreenTablet" class="product__thumbs">
-      <Swiper :slides-per-view="imgUrls.length" :space-between="10" @swiper="setProductThumbs">
-        <SwiperSlide v-for="(url, id) in imgUrls" :key="id">
-          <div
-            class="product__thumb"
-            :class="{ 'product__thumb--active': id === activeThumb }"
-            @click="activeThumb = id"
-          >
-            <img :src="url" :alt="product.name" />
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
-    <div class="product__content">
-      <div class="product__content-text">
-        <p class="product__description">{{ product.description }}</p>
-        <ul class="product__features">
-          <li v-for="(feature, id) in product.features" :key="id" class="product__features-item">{{ feature }}</li>
-        </ul>
-        <p class="product__message">{{ PRODUCT_MESSAGE }}</p>
-        <div class="product__sizing">
-          <p class="product__sizing-title">Info o produkcie</p>
-          <ul class="product__sizing-list">
-            <li v-for="(item, id) in product.sizes" :key="id" class="product__sizing-item">{{ item }}</li>
-          </ul>
-        </div>
       </div>
-      <form class="product__content-cart">
-        <p class="product__price">{{ product.price }},00 zł</p>
-        <input v-model="amount" type="number" />
-        <BaseButton type="button" @click="handleAddProductToCart()">Dodaj do koszyka</BaseButton>
-      </form>
-    </div>
+
+      <div class="product__content">
+        <div class="product__content-text">
+          <p class="product__description">{{ product.description }}</p>
+          <ul class="product__features">
+            <li v-for="(feature, id) in product.features" :key="id" class="product__features-item">{{ feature }}</li>
+          </ul>
+          <p class="product__message">{{ PRODUCT_MESSAGE }}</p>
+          <div class="product__sizing">
+            <p class="product__sizing-title">Info o produkcie</p>
+            <ul class="product__sizing-list">
+              <li v-for="(item, id) in product.sizes" :key="id" class="product__sizing-item">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+        <form class="product__content-cart">
+          <p class="product__price">{{ product.price }},00 zł</p>
+          <input v-model="amount" type="number" />
+          <BaseButton type="button" @click="handleAddProductToCart()">Dodaj do koszyka</BaseButton>
+        </form>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -88,6 +94,8 @@ function setProductThumbs(swiperInstance: HTMLElement) {
   productThumbs.value = swiperInstance;
 }
 
+const isLoading = computed(() => !imgUrls.value);
+
 async function setImgUrls() {
   const urls: string[] = [];
   for (const img of product.value.images) {
@@ -122,6 +130,8 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .product {
+  min-height: 50vh;
+  background-color: $color-white;
   margin-inline: auto;
   max-width: 98rem;
   display: flex;

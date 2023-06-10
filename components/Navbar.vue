@@ -100,7 +100,7 @@ watch(currentRoute, () => {
   &__link {
     text-decoration: none;
     color: $color-black;
-    font-size: 2.4rem;
+    font-size: 2rem;
     padding: 1rem;
     font-family: $font-lato;
 

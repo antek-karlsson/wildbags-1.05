@@ -1,5 +1,10 @@
 <template>
   <div>
+    <ClientOnly>
+      <notifications group="success" position="top center" classes="vue-notification success" />
+      <notifications group="error" position="top center" classes="vue-notification error" />
+      <notifications group="warning" position="top center" classes="vue-notification warn" />
+    </ClientOnly>
     <Navbar />
     <main>
       <slot />

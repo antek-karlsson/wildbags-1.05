@@ -5,19 +5,21 @@
         <h1 class="cart-modal__title">Koszyk</h1>
         <div class="cart-modal__content">
           <div class="cart-modal__items">
-            <div v-for="(item, id) in cart.cartItems" :key="id" class="cart-modal__item">
-              <img class="cart-modal__item-img" :src="item.imgUrl" :alt="item.name" />
-              <div class="cart-modal__item-details">
-                <h2 class="cart-modal__item-name">{{ item.name }}</h2>
-                <p class="cart-modal__item-amount">{{ item.amount }} x {{ item.price }} zł</p>
-              </div>
-              <IconCarbon:close class="cart-modal__icon-close" @click="cart.removeProductFromCart(item.id)" />
-            </div>
+            <CartItem
+              v-for="(item, id) in cart.cartItems"
+              :key="id"
+              :item="item"
+              @remove-product="cart.removeProductFromCart"
+              @increment-amount="cart.incrementCartItem"
+              @decrement-amount="cart.decrementCartItem"
+            />
           </div>
         </div>
         <div class="cart-modal__summary">
           <p class="cart-modal__total">Suma: {{ cart.cartTotal }},00 zł</p>
-          <BaseButton class="cart-modal__button">Przejdź do zamówienia</BaseButton>
+          <BaseButton class="cart-modal__button" :disabled="cart.cartQuantity < 1" @click="goToCheckout">
+            Przejdź do zamówienia
+          </BaseButton>
         </div>
       </div>
     </Modal>
@@ -27,11 +29,19 @@
 <script setup lang="ts">
 import { useCartStore } from '@/store/cart';
 
-defineEmits<{
+const emit = defineEmits<{
   (e: 'close-modal'): void;
 }>();
 
+const router = useRouter();
 const cart = useCartStore();
+
+function goToCheckout() {
+  if (cart.cartQuantity < 1) return;
+
+  router.push('/shop/checkout');
+  emit('close-modal');
+}
 </script>
 
 <style lang="scss" scoped>
@@ -74,42 +84,6 @@ const cart = useCartStore();
     display: flex;
     flex-direction: column;
     gap: 1.8rem;
-  }
-
-  &__item {
-    display: flex;
-    gap: 1.5rem;
-    padding: 0.5rem;
-    border-bottom: solid 1px $color-black;
-  }
-
-  &__item-img {
-    max-width: 150px;
-    width: 100%;
-  }
-
-  &__item-details {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-block-end: 1.4rem;
-  }
-
-  &__item-name {
-    font-size: 2rem;
-  }
-
-  &__item-details {
-    font-size: 1.4rem;
-  }
-
-  &__icon-close {
-    font-size: 3rem;
-    color: red;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 
   &__summary {
