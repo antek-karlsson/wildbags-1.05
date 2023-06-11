@@ -6,6 +6,10 @@ export const firstName = helpers.withMessage('Wprowadź imię', required);
 
 export const lastName = helpers.withMessage('Wprowadź nazwisko', required);
 
+export const subject = helpers.withMessage('Wprowadź temat wiadomości', required);
+
+export const message = helpers.withMessage('Wprowadź treść wiadomości', required);
+
 export const address = helpers.withMessage('Wprowadź adres', required);
 
 export const city = helpers.withMessage('Wprowadź miasto', required);
