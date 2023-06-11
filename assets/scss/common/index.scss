@@ -21,8 +21,8 @@ body {
 *::before {
   box-sizing: inherit;
 }
-
-input:focus {
+input,
+input:focus, textarea, textarea:focus {
   all: unset;
 }
 

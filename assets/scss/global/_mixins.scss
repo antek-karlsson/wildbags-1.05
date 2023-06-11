@@ -8,28 +8,29 @@
 
 @mixin input {
   box-sizing: border-box;
-    position: relative;
-    width: 100%;
-    padding: 0.5rem 0 0.5rem 1rem;
-    border: 0.01rem solid $color-black;
-    border-radius: 0.04rem;
-    background-color: transparent;
-    font-weight: 325;
-    font-size: 1.4rem;
-    line-height: 1.57;
-    color: $color-black;
-    transition: all 0.2s ease-in-out;
+  position: relative;
+  width: 100%;
+  padding: 0.5rem 0 0.5rem 1rem;
+  border: 0.01rem solid transparent;
+  border-bottom: 0.01rem solid $color-black;
+  border-radius: 0.04rem;
+  background-color: transparent;
+  font-weight: 325;
+  font-size: 1.4rem;
+  line-height: 1.57;
+  color: $color-black;
+  transition: all 0.2s ease-in-out;
 
-    @media (hover: hover) {
-      &:hover {
-        background: rgba(202, 202, 202, 0.5)
-      }
+  @media (hover: hover) {
+    &:hover {
+      border: 0.01rem solid $color-black;
+      // background: rgba(202, 202, 202, 0.5)
     }
+  }
 
-    &:active,
-    &:focus,
-    &:focus-within,
-    &:focus-visible {
-      border: 0.01rem goldenrod solid;
-    }
+  &:active,
+  &:focus,
+  &:focus-within {
+    border: 0.01rem #C50177 solid;
+  }
 }

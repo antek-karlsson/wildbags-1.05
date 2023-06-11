@@ -1,13 +1,22 @@
 <template>
-  <div class="info-card" :class="{ 'info-card--ltr': direction === 'ltr', 'info-card--rtl': direction === 'rtl' }">
-    <div class="info-card__section">
-      <img class="info-card__img" :src="imgUrl" :alt="imgAlt" />
+  <div
+    class="home-section"
+    :class="{ 'home-section--ltr': direction === 'ltr', 'home-section--rtl': direction === 'rtl' }"
+  >
+    <div class="home-section__section">
+      <img class="home-section__img" :src="imgUrl" :alt="imgAlt" />
     </div>
-    <div class="info-card__section">
-      <h2 class="info-card__title">{{ title }}</h2>
-      <div class="info-card__text-container">
-        <p v-for="(item, id) in text" :key="id" class="info-card__text">{{ item }}</p>
-      </div>
+    <div class="home-section__section">
+      <template v-if="forContact">
+        <h2 class="home-section__title">{{ title }}</h2>
+        <ContactForm />
+      </template>
+      <template v-else>
+        <h2 class="home-section__title">{{ title }}</h2>
+        <div class="home-section__text-container">
+          <p v-for="(item, id) in text" :key="id" class="home-section__text">{{ item }}</p>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -18,12 +27,13 @@ defineProps<{
   imgUrl: string;
   imgAlt: string;
   title: string;
-  text: string[];
+  text?: string[];
+  forContact?: boolean;
 }>();
 </script>
 
 <style lang="scss" scoped>
-.info-card {
+.home-section {
   margin: 0 auto;
   width: 100%;
   padding: 2.4rem;
@@ -50,7 +60,7 @@ defineProps<{
   }
 
   &--rtl {
-    @include flex(column-reverse);
+    @include flex(column);
 
     @include tablet-landscape {
       @include flex(row-reverse, null, flex-start);
@@ -65,7 +75,7 @@ defineProps<{
   }
 
   &__section {
-    @include flex(column, flex-start, flex-start, 1.6rem);
+    @include flex(column, flex-start, flex-start, 6.4rem);
 
     @include tablet-landscape {
       width: 50%;

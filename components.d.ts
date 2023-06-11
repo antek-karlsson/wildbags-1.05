@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     'IconCarbon:shoppingCart': typeof import('~icons/carbon/shopping-cart')['default']
     'IconIc:sharpMinus': typeof import('~icons/ic/sharp-minus')['default']
     'IconIc:sharpPlus': typeof import('~icons/ic/sharp-plus')['default']
+    'IconMdi:instagram': typeof import('~icons/mdi/instagram')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

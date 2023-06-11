@@ -2,7 +2,8 @@
   <div class="home-page">
     <Hero :text="heroText" />
     <ProductSwiper />
-    <InfoCard
+    <SectionDivider />
+    <HomeSection
       direction="ltr"
       img-url="/images/info-card-1.png"
       img-alt="Violet purse"
@@ -13,7 +14,7 @@
       ]"
     />
     <SectionDivider />
-    <InfoCard
+    <HomeSection
       direction="rtl"
       img-url="/images/info-card-2.png"
       img-alt="high quality upcycled fabrics sign"
@@ -22,6 +23,15 @@
     />
     <SectionDivider />
     <Features />
+    <SectionDivider />
+    <HomeSection
+      for-contact
+      direction="rtl"
+      title="Kontaktuj się!"
+      img-url="/images/contact-section.jpg"
+      img-alt="Model showcasing a wild-bag"
+    />
+    <SectionDivider />
   </div>
 </template>
 

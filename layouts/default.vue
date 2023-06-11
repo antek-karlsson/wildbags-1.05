@@ -9,6 +9,7 @@
     <main>
       <slot />
     </main>
+    <Footer />
     <div id="modal-target"></div>
   </div>
 </template>
