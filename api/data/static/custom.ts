@@ -13,7 +13,7 @@ export const custom = {
     `,
   ],
   image: {
-    src: '/images/custom/custom.jpg',
+    src: 'custom.jpg',
     alt: 'Custom bag | Wildbags',
   },
 };

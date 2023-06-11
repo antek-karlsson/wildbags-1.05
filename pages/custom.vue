@@ -6,7 +6,7 @@
     <div class="custom__text-container">
       <p v-for="(text, id) in texts" :key="id" class="custom__text">{{ text }}</p>
     </div>
-    <img :src="image.src" :alt="image.alt" />
+    <img :src="`/images/custom/${image.src}`" :alt="image.alt" />
   </div>
 </template>
 
