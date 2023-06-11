@@ -31,7 +31,6 @@
       img-url="/images/contact-section.jpg"
       img-alt="Model showcasing a wild-bag"
     />
-    <SectionDivider />
   </div>
 </template>
 
