@@ -62,7 +62,7 @@ function onInput(event: Event) {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 0.08rem;
+  gap: 0.8rem;
 
   &__label {
     display: block;
@@ -94,7 +94,7 @@ function onInput(event: Event) {
     align-items: flex-start;
     justify-content: center;
     gap: 0.08rem;
-    margin-top: 0.08rem;
+    margin-top: 0.8rem;
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.2;
