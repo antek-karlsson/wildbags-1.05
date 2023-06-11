@@ -10,6 +10,8 @@ import { features } from '~/api/data/static/features';
 
 <style lang="scss" scoped>
 .features {
+  margin: 0 auto;
+  width: 100%;
   @include flex($justify: center, $gap: 3.2rem);
   flex-wrap: wrap;
   padding: 2.4rem;
