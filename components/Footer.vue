@@ -1,15 +1,19 @@
 <template>
-  <div class="footer">
-    <NuxtLink to="/"><img src="@/assets/images/logo.png" alt="Wildbags logo" /></NuxtLink>
-    <a class="footer__link" href="mailto: wildbags@wildbags.pl">wildbags@wildbags.pl</a>
-    <a class="footer__link--icon" href="https://www.instagram.com/_wildbags/" target="_blank">
-      <IconMdi:instagram />
-    </a>
-    <div class="footer__copyright">
-      <p class="footer__copyright-main"><span>&copy;</span> 2023 Wildbags</p>
-      <p class="footer__copyright-sub">
-        built by <a href="https://github.com/antek-karlsson" target="_blank">Antoni Karlsson</a>
-      </p>
+  <div>
+    <SectionDivider />
+    <div class="footer">
+      <NuxtLink to="/"><img src="@/assets/images/logo.png" alt="Wildbags logo" /></NuxtLink>
+      <a class="footer__link" href="tel: +48537254320">+48 537 254 320</a>
+      <a class="footer__link" href="mailto: wildbags@wildbags.pl">wildbags@wildbags.pl</a>
+      <a class="footer__link--icon" href="https://www.instagram.com/_wildbags/" target="_blank">
+        <IconMdi:instagram />
+      </a>
+      <div class="footer__copyright">
+        <p class="footer__copyright-main"><span>&copy;</span> 2023 Wildbags</p>
+        <p class="footer__copyright-sub">
+          built by <a href="https://github.com/antek-karlsson" target="_blank">Antoni Karlsson</a>
+        </p>
+      </div>
     </div>
   </div>
 </template>
