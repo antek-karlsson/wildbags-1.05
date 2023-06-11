@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <img src="images/about/about.jpg" alt="Wildbags founder: Dominika Makowska" />
+    <img src="/images/about/about.jpg" alt="Wildbags founder: Dominika Makowska" />
     <h1 class="about__title">O mnie</h1>
     <div class="about__text-container">
       <p v-for="(text, id) in about" :key="id" class="about__text">{{ text }}</p>
