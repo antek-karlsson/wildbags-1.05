@@ -93,4 +93,7 @@ export default defineNuxtConfig({
   imports: {
     dirs: ['composables/**'],
   },
+  experimental: {
+    payloadExtraction: false,
+  },
 });
