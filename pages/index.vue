@@ -21,6 +21,7 @@
       :text="['Napisz do mnie - dogramy wspólnie szczegóły :)', 'wildbags@wildbags.pl']"
     />
     <SectionDivider />
+    <Features />
   </div>
 </template>
 
