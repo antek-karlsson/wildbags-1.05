@@ -104,10 +104,6 @@ watch(currentRoute, () => {
     padding: 1rem;
     font-family: $font-lato;
 
-    @include desktop-2xl {
-      font-size: 3.2rem;
-    }
-
     &--active {
       border-bottom: 2px solid $color-black;
     }
