@@ -15,6 +15,7 @@ import { about } from '~/api/data/static/about';
 <style lang="scss" scoped>
 .about {
   @include flex(column, center, center, 3.2rem);
+  margin: 0 auto;
   padding: 2.4rem;
 
   @include tablet {
@@ -28,6 +29,10 @@ import { about } from '~/api/data/static/about';
   @include desktop-2xl {
     max-width: 80%;
     padding: 11.2rem;
+  }
+
+  img {
+    max-width: 45rem;
   }
 
   &__title {

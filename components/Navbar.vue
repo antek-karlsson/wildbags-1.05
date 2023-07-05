@@ -16,9 +16,6 @@
           <NuxtLink class="navbar__link" :class="{ 'navbar__link--active': currentRoute === '/about' }" to="/about">
             O mnie
           </NuxtLink>
-          <NuxtLink class="navbar__link" :class="{ 'navbar__link--active': currentRoute === '/custom' }" to="/custom">
-            Personalizowane
-          </NuxtLink>
         </div>
       </template>
       <template v-if="isScreenMobile">
@@ -32,9 +29,6 @@
           </NuxtLink>
           <NuxtLink class="navbar__link" :class="{ 'navbar__link--active': currentRoute === '/about' }" to="/about">
             O mnie
-          </NuxtLink>
-          <NuxtLink class="navbar__link" :class="{ 'navbar__link--active': currentRoute === '/custom' }" to="/custom">
-            Personalizowane
           </NuxtLink>
         </div>
       </template>
@@ -103,6 +97,7 @@ watch(currentRoute, () => {
     font-size: 2rem;
     padding: 1rem;
     font-family: $font-lato;
+    font-weight: 400;
 
     &--active {
       border-bottom: 2px solid $color-black;

@@ -1,42 +1,50 @@
 <template>
-  <div class="home-page">
-    <Hero :text="heroText" />
-    <ProductSwiper />
-    <SectionDivider />
-    <HomeSection
-      direction="ltr"
-      img-url="/images/info-card-1.png"
-      img-alt="Violet purse"
-      title="Info"
-      :text="[
-        'Wszystkie produkty , które tu zobaczysz stworzone są zgodnie z ideą #upcykling , czyli zmniejszeniem zużycia surowców naturalnych oraz wytwarzanych odpadów poprzez tworzenie produktów z materiałów z drugiej ręki o wyższej wartości niż pojedyncze tworzywo użyte do stworzenia danej rzeczy.',
-        'To rękodzieło, które powstaje z ciągłych poszukiwań oryginalnych materiałów z drugiego obiegu i jest kreatywnie przekształcane w zupełnie nową rzecz.',
-      ]"
-    />
-    <SectionDivider />
-    <HomeSection
-      direction="rtl"
-      img-url="/images/info-card-2.png"
-      img-alt="high quality upcycled fabrics sign"
-      title="Chciałabyś mieć wyjątkową torbę lub kosmetyczkę z wymarzonego materiału w ulubionym kolorze?"
-      :text="['Napisz do mnie - dogramy wspólnie szczegóły :)', 'wildbags@wildbags.pl']"
-    />
-    <SectionDivider />
-    <Features />
-    <SectionDivider />
-    <HomeSection
-      for-contact
-      direction="rtl"
-      title="Kontaktuj się!"
-      img-url="/images/contact-section.jpg"
-      img-alt="Model showcasing a wild-bag"
-    />
-  </div>
+  <ClientOnly>
+    <div class="home-page">
+      <Hero :text="heroText" />
+      <ProductSwiper />
+      <SectionDivider />
+      <HomeSection
+        direction="ltr"
+        img-url="/images/info-card-1.png"
+        img-alt="Violet purse"
+        title="Info"
+        :text="[
+          'Każda rzecz, którą znajdziesz w moim sklepie jest rękodziełem wykonanym ze starannie wyselekcjonowanych tkanin.',
+          'Każdy produkt jest unikatowy i niepowtarzalny :)',
+          'Wild Bags specjalizuje się w doręczeniu Ci funkcjonalnych stylowych i nadzwyczajnych akcesoriów do codziennych potrzeb.',
+          'Od kosmetyczek różnych rozmiarów po duże torby na ramię, od malutkich saszetek po wygodne etui na iPada czy laptopa.',
+        ]"
+      />
+      <SectionDivider />
+      <HomeSection
+        direction="rtl"
+        img-url="/images/info-card-2.png"
+        img-alt="high quality upcycled fabrics sign"
+        title="Chciałabyś mieć wyjątkową torbę lub kosmetyczkę z wymarzonego materiału w ulubionym kolorze?"
+        :text="infoTexts"
+      />
+      <SectionDivider />
+      <Features />
+      <SectionDivider />
+      <HomeSection
+        for-contact
+        direction="rtl"
+        title="Kontaktuj się!"
+        img-url="/images/contact-section.jpg"
+        img-alt="Model showcasing a wild-bag"
+      />
+    </div>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">
 import { useProductsStore } from '@/store/products';
-const heroText = 'ODKRYJ ABSOLUTNIE NIEPOSPOLITY ŚWIAT UPCYCLINGU I NOŚ SIĘ WYJĄTKOWO!';
+const heroText = 'ODKRYJ KOLOROWY ŚWIAT UNIKATOWEGO RZEMIOSŁA I ZAFUNDUJ SOBIE COŚ WYJĄTKOWEGO!';
+const infoTexts = [
+  'Napisz do mnie - dogramy wspólnie szczegóły :)',
+  '<a href="mailto:wildbags.kontakt@gmail.com">wildbags.kontakt@gmail.com',
+];
 
 const store = useProductsStore();
 

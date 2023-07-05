@@ -115,8 +115,11 @@ async function sendMessage() {
 <style lang="scss" scoped>
 .contact-form {
   min-width: 32.5rem;
-  max-width: 90%;
   width: 100%;
   @include flex(column, flex-start, center, 1.5rem);
+
+  @include tablet-landscape {
+    max-width: 90%;
+  }
 }
 </style>

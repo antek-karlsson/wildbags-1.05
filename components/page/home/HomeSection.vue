@@ -14,7 +14,7 @@
       <template v-else>
         <h2 class="home-section__title">{{ title }}</h2>
         <div class="home-section__text-container">
-          <p v-for="(item, id) in text" :key="id" class="home-section__text">{{ item }}</p>
+          <p v-for="(item, id) in text" :key="id" class="home-section__text" v-html="item" />
         </div>
       </template>
     </div>
@@ -52,18 +52,18 @@ defineProps<{
   }
 
   &--ltr {
-    @include flex(column);
+    @include flex(column, null, null, 3.2rem);
 
     @include tablet-landscape {
-      @include flex(row);
+      @include flex(row, null, flex-start, 6.4rem);
     }
   }
 
   &--rtl {
-    @include flex(column);
+    @include flex(column, null, null, 3.2rem);
 
     @include tablet-landscape {
-      @include flex(row-reverse, null, flex-start);
+      @include flex(row-reverse, null, flex-start, 6.4rem);
       .info-card__section {
         gap: 4.8rem;
       }
@@ -75,7 +75,8 @@ defineProps<{
   }
 
   &__section {
-    @include flex(column, flex-start, flex-start, 6.4rem);
+    @include flex(column, flex-start, flex-start, 3.2rem);
+    width: 100%;
 
     @include tablet-landscape {
       width: 50%;
@@ -85,6 +86,12 @@ defineProps<{
   &__img {
     width: 100%;
     border-radius: 1rem;
+
+    @include tablet-landscape {
+      max-width: 60rem;
+      max-height: 60rem;
+      object-fit: cover;
+    }
   }
 
   &__title {

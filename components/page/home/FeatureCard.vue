@@ -1,6 +1,8 @@
 <template>
   <div class="feature-card">
-    <img class="feature-card__img" :src="`/images/features/${imgSrc}`" :alt="title" />
+    <div class="feature-card__img-container">
+      <img class="feature-card__img" :src="`/images/features/${imgSrc}`" :alt="title" />
+    </div>
     <h3 class="feature-card__title">{{ title }}</h3>
   </div>
 </template>
@@ -17,12 +19,20 @@ defineProps<Props>();
 <style lang="scss" scoped>
 .feature-card {
   @include flex(column, flex-start, center, 2.4rem);
-  max-width: 16rem;
+  max-width: 20rem;
   text-align: center;
 
+  &__img-container {
+    width: 18rem;
+    height: 18rem;
+  }
+
   &__img {
-    max-width: 16rem;
     border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   &__title {
