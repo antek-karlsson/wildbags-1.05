@@ -1,22 +1,22 @@
 export const features = [
   {
     id: 1,
-    title: 'JESTEŚMY ECO',
-    img: 'features_1.jpg',
+    title: 'KOSMETYCZKI',
+    img: 'features_1.png',
   },
   {
     id: 1,
-    title: 'WYŻSZA FORMA UPCYCLINGU',
-    img: 'features_2.jpg',
+    title: 'KUFERKI',
+    img: 'features_2.png',
   },
   {
     id: 1,
-    title: 'SLOW FASHION',
-    img: 'features_3.jpg',
+    title: 'SASZETKI',
+    img: 'features_3.png',
   },
   {
     id: 1,
-    title: 'ZERO WASTE',
-    img: 'features_4.jpg',
+    title: 'TORBY',
+    img: 'features_4.png',
   },
 ];

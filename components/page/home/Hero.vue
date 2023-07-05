@@ -15,7 +15,7 @@ defineProps<{
   width: 100%;
   height: 100vh;
   text-align: center;
-  background-image: linear-gradient(rgba($color-black, 0.5), rgba($color-black, 0.5)), url('@/assets/images/hero.png');
+  background-image: linear-gradient(rgba($color-black, 0.5), rgba($color-black, 0.5)), url('@/assets/images/hero-2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
