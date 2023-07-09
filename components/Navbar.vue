@@ -74,6 +74,12 @@ watch(currentRoute, () => {
   @include flex($direction: column, $justify: center, $align: center);
   padding: 2rem;
 
+  &__logo {
+    img {
+      width: 100%;
+    }
+  }
+
   &__cart-icon {
     align-self: flex-end;
   }
