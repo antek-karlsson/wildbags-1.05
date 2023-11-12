@@ -6,4 +6,12 @@
   </div>
 </template>
 
-<script></script>
+<script lang="ts" setup>
+import { useProductsStore } from '@/store/products';
+
+const { fetchAllProducts } = useProductsStore();
+
+onMounted(() => {
+  fetchAllProducts();
+});
+</script>

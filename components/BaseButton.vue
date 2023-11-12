@@ -44,7 +44,7 @@ const classes = computed(() => {
   border: 0.01rem solid transparent;
   border-radius: 0.01rem;
   min-width: 12rem;
-  // max-width: 30rem;
+
   font-family: $font-lato;
   font-weight: 500;
   font-size: 1.4rem;
@@ -59,13 +59,6 @@ const classes = computed(() => {
       cursor: pointer;
     }
   }
-
-  // &:disabled {
-  //   pointer-events: none;
-  //   background-color: $gray--200;
-  //   border: rem(1px) solid $gray--400;
-  //   color: $gray--400;
-  // }
 
   @include tablet {
     min-width: 15rem;
@@ -125,43 +118,5 @@ const classes = computed(() => {
       }
     }
   }
-
-  // &--secondary {
-  //   background-color: $primary-color--medium;
-  //   border-color: $primary-color--medium;
-  //   color: $white;
-
-  //   @media (hover: hover) {
-  //     &:hover {
-  //       background-color: $white;
-  //       color: $primary-color--medium;
-  //     }
-  //   }
-
-  //   &:focus-visible {
-  //     background-color: $white;
-  //     color: $primary-color--medium;
-  //   }
-  // }
-
-  // &--secondary-border {
-  //   background-color: $primary-color--medium;
-  //   border-color: $gray--550;
-  //   color: $white;
-
-  //   @media (hover: hover) {
-  //     &:hover {
-  //       border-color: $primary-color--medium;
-  //       background-color: $white;
-  //       color: $primary-color--medium;
-  //     }
-  //   }
-
-  //   &:focus-visible {
-  //     border-color: $primary-color--medium;
-  //     background-color: $white;
-  //     color: $primary-color--medium;
-  //   }
-  // }
 }
 </style>

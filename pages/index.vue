@@ -39,18 +39,11 @@
 </template>
 
 <script setup lang="ts">
-import { useProductsStore } from '@/store/products';
 const heroText = 'ODKRYJ KOLOROWY ŚWIAT UNIKATOWEGO RZEMIOSŁA I ZAFUNDUJ SOBIE COŚ WYJĄTKOWEGO!';
 const infoTexts = [
   'Napisz do mnie - dogramy wspólnie szczegóły :)',
-  '<a href="mailto:wildbags.kontakt@gmail.com">wildbags.kontakt@gmail.com',
+  '<a href="mailto:wildbags.kontakt@gmail.com">wildbags.kontakt@gmail.com</a>',
 ];
-
-const store = useProductsStore();
-
-onMounted(() => {
-  store.fetchAllProducts();
-});
 </script>
 
 <style lang="scss" scoped>
