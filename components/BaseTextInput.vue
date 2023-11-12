@@ -104,7 +104,7 @@ function onInput(event: Event) {
 
   &--hasError {
     &__input {
-      border: rem(1px) solid red;
+      border: 1px solid red;
     }
   }
 }

@@ -4,7 +4,7 @@
     <div class="footer">
       <NuxtLink to="/"><img src="@/assets/images/logo.png" alt="Wildbags logo" /></NuxtLink>
       <a class="footer__link" href="tel: +48537254320">+48 537 254 320</a>
-      <a class="footer__link" href="mailto: wildbags@wildbags.pl">wildbags@wildbags.pl</a>
+      <a class="footer__link" href="mailto: wildbags.kontakt@gmail.com">wildbags.kontakt@gmail.com</a>
       <a class="footer__link--icon" href="https://www.instagram.com/_wildbags/" target="_blank">
         <IconMdi:instagram />
       </a>

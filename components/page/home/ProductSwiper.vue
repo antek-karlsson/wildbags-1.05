@@ -9,7 +9,7 @@
         navigation
         @swiper="setProductSwiper"
       >
-        <SwiperSlide v-for="product in store.allProducts" :key="product.id">
+        <SwiperSlide v-for="product in store.availableProducts" :key="product.id">
           <ProductCard :product="product" />
         </SwiperSlide>
       </Swiper>

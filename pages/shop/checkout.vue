@@ -135,8 +135,7 @@ import {
 import { useCartStore } from '@/store/cart';
 
 const DELIVERY_OPTIONS = [
-  { id: 1, name: 'InPost', price: 10 },
-  { id: 2, name: 'Kurier', price: 15.0 },
+  { id: 1, name: 'Paczkomat InPost', price: 14.0 },
   { id: 3, name: 'Odbiór osobisty', price: 0.0, suffix: 'zł' },
 ];
 
@@ -145,7 +144,11 @@ const config = useRuntimeConfig();
 const cart = useCartStore();
 
 const checkoutStep = ref(1);
-const chosenDelivery = ref<{ id: number; name: string; price: number }>({ id: 1, name: 'InPost', price: 10 });
+const chosenDelivery = ref<{ id: number; name: string; price: number }>({
+  id: 1,
+  name: 'Paczkomat InPost',
+  price: 14.0,
+});
 const order = ref({
   order_id: '',
   email: '',

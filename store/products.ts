@@ -6,6 +6,11 @@ export const useProductsStore = defineStore('products', () => {
   const { db, storage } = useFirebase();
   const allProducts = ref<Product[]>();
   const singleProduct = ref<Product | object>();
+  const availableProducts = ref<Product[]>();
+
+  watch(allProducts, () => {
+    availableProducts.value = allProducts.value.filter((product) => product.status === 'public');
+  });
 
   async function fetchAllProducts() {
     const items = [];
@@ -53,6 +58,7 @@ export const useProductsStore = defineStore('products', () => {
 
   return {
     allProducts,
+    availableProducts,
     singleProduct,
     fetchAllProducts,
     fetchSingleProduct,

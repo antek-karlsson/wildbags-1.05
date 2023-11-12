@@ -24,7 +24,7 @@
           </Swiper>
         </ClientOnly>
       </div>
-      <div v-if="imgUrls && !isScreenTablet" class="product__thumbs">
+      <div v-if="showThumbnails" class="product__thumbs">
         <Swiper :slides-per-view="imgUrls.length" :space-between="10" @swiper="setProductThumbs">
           <SwiperSlide v-for="(url, id) in imgUrls" :key="id">
             <div
@@ -72,7 +72,7 @@ import breakpoints from '@/api/data/constants/mediaQueries';
 import type { Product } from '@/types/product';
 
 const route = useRoute();
-const productStore = useProductsStore();
+const store = useProductsStore();
 const { addProductToCart } = useCartStore();
 const isScreenTablet = useMediaQuery(breakpoints.sm);
 
@@ -82,6 +82,8 @@ const activeThumb = ref(0);
 const amount = ref(1);
 
 const productId = computed(() => route.params.productId as string);
+
+const showThumbnails = computed(() => !!imgUrls.value && imgUrls.value.length > 1 && !isScreenTablet.value);
 
 const modules = [SwiperA11y, SwiperPagination, SwiperNavigation, SwiperThumbs];
 const productSwiper = ref(null);
@@ -99,7 +101,7 @@ const isLoading = computed(() => !imgUrls.value);
 async function setImgUrls() {
   const urls: string[] = [];
   for (const img of product.value.images) {
-    const url = await productStore.getImgUrl(img);
+    const url = await store.getImgUrl(img);
     urls.push(url);
   }
   imgUrls.value = urls;
@@ -122,8 +124,8 @@ function setActiveThumbnail(id: number) {
 }
 
 onMounted(async () => {
-  await productStore.fetchSingleProduct(productId.value);
-  product.value = productStore.singleProduct as Product;
+  await store.fetchSingleProduct(productId.value);
+  product.value = store.singleProduct as Product;
   setImgUrls();
 });
 </script>

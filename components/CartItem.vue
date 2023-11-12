@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { CartItem } from '@/types/cart-item';
+import type { CartItem } from '@/types/cart-item';
 
 interface Props {
   item: CartItem;
